@@ -1,0 +1,122 @@
+<%= form_with(model: worksheet) do |form| %>
+  <% if worksheet.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(worksheet.errors.count, "error") %> prohibited this worksheet from being saved:</h2>
+
+      <ul>
+        <% worksheet.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :mro_rank, style: "display: block" %>
+    <%= form.number_field :mro_rank %>
+  </div>
+
+  <div>
+    <%= form.label :mro_name, style: "display: block" %>
+    <%= form.text_field :mro_name %>
+  </div>
+
+  <div>
+    <%= form.label :mro_billet, style: "display: block" %>
+    <%= form.text_field :mro_billet %>
+  </div>
+
+  <div>
+    <%= form.label :mro_unit, style: "display: block" %>
+    <%= form.text_field :mro_unit %>
+  </div>
+
+  <div>
+    <%= form.label :mro_component, style: "display: block" %>
+    <%= form.text_field :mro_component %>
+  </div>
+
+  <div>
+    <%= form.label :mro_status, style: "display: block" %>
+    <%= form.number_field :mro_status %>
+  </div>
+
+  <div>
+    <%= form.label :reporting_occasion, style: "display: block" %>
+    <%= form.number_field :reporting_occasion %>
+  </div>
+
+  <div>
+    <%= form.label :mmsb_due_date, style: "display: block" %>
+    <%= form.datetime_field :mmsb_due_date %>
+  </div>
+
+  <div>
+    <%= form.label :from_date, style: "display: block" %>
+    <%= form.datetime_field :from_date %>
+  </div>
+
+  <div>
+    <%= form.label :to_date, style: "display: block" %>
+    <%= form.datetime_field :to_date %>
+  </div>
+
+  <div>
+    <%= form.label :rs_rank, style: "display: block" %>
+    <%= form.number_field :rs_rank %>
+  </div>
+
+  <div>
+    <%= form.label :rs_name, style: "display: block" %>
+    <%= form.text_field :rs_name %>
+  </div>
+
+  <div>
+    <%= form.label :rs_billet, style: "display: block" %>
+    <%= form.text_field :rs_billet %>
+  </div>
+
+  <div>
+    <%= form.label :ro_rank, style: "display: block" %>
+    <%= form.number_field :ro_rank %>
+  </div>
+
+  <div>
+    <%= form.label :ro_name, style: "display: block" %>
+    <%= form.text_field :ro_name %>
+  </div>
+
+  <div>
+    <%= form.label :ro_billet, style: "display: block" %>
+    <%= form.text_field :ro_billet %>
+  </div>
+
+  <div>
+    <%= form.label :commendatory, style: "display: block" %>
+    <%= form.check_box :commendatory %>
+  </div>
+
+  <div>
+    <%= form.label :commendatory_description, style: "display: block" %>
+    <%= form.text_field :commendatory_description %>
+  </div>
+
+  <div>
+    <%= form.label :recommended_comments, style: "display: block" %>
+    <%= form.text_field :recommended_comments %>
+  </div>
+
+  <div>
+    <%= form.label :amplifying_information, style: "display: block" %>
+    <%= form.text_field :amplifying_information %>
+  </div>
+
+  <div>
+    <%= form.label :recommended_comparative_assessment, style: "display: block" %>
+    <%= form.text_field :recommended_comparative_assessment %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

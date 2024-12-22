@@ -1,0 +1,2 @@
+json.extract! worksheet, :id, :mro_rank, :mro_name, :mro_billet, :mro_unit, :mro_component, :mro_status, :reporting_occasion, :mmsb_due_date, :from_date, :to_date, :rs_rank, :rs_name, :rs_billet, :ro_rank, :ro_name, :ro_billet, :commendatory, :commendatory_description, :recommended_comments, :amplifying_information, :recommended_comparative_assessment, :created_at, :updated_at
+json.url worksheet_url(worksheet, format: :json)

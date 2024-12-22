@@ -1,0 +1,47 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mro_rank: 1
+  mro_name: MyString
+  mro_billet: MyString
+  mro_unit: MyString
+  mro_component: MyString
+  mro_status: 1
+  reporting_occasion: 1
+  mmsb_due_date: 2024-12-21 19:09:29
+  from_date: 2024-12-21 19:09:29
+  to_date: 2024-12-21 19:09:29
+  rs_rank: 1
+  rs_name: MyString
+  rs_billet: MyString
+  ro_rank: 1
+  ro_name: MyString
+  ro_billet: MyString
+  commendatory: false
+  commendatory_description: MyString
+  recommended_comments: MyString
+  amplifying_information: MyString
+  recommended_comparative_assessment: MyString
+
+two:
+  mro_rank: 1
+  mro_name: MyString
+  mro_billet: MyString
+  mro_unit: MyString
+  mro_component: MyString
+  mro_status: 1
+  reporting_occasion: 1
+  mmsb_due_date: 2024-12-21 19:09:29
+  from_date: 2024-12-21 19:09:29
+  to_date: 2024-12-21 19:09:29
+  rs_rank: 1
+  rs_name: MyString
+  rs_billet: MyString
+  ro_rank: 1
+  ro_name: MyString
+  ro_billet: MyString
+  commendatory: false
+  commendatory_description: MyString
+  recommended_comments: MyString
+  amplifying_information: MyString
+  recommended_comparative_assessment: MyString
