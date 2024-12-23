@@ -1,8 +1,86 @@
-<div class="container">
+<div class="container mt-4">
   <p style="color: green"><%= notice %></p>
+  <h1><%= @worksheet.mro_rank %> <%= @worksheet.mro_name %> </h1>
 
-  <h1>MROW</h1>
-  <h2><%= @worksheet.mro_rank %> <%= @worksheet.mro_name %> </h2>
 
-  <%= @worksheet.inspect %>
+  <h2 class="mb-4 mt-5">Worksheet Details</h2>
+
+  <% if notice %>
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Marine Reported On (MRO)</h3>
+    </div>
+
+    <div class="col-md-3">
+      <strong>Rank:</strong> <%= @worksheet.mro_rank %>
+    </div>
+    <div class="col-md-5">
+      <strong>Name:</strong> <%= @worksheet.mro_name %>
+    </div>
+    <div class="col-md-4">
+      <strong>Billet:</strong> <%= @worksheet.mro_billet %>
+    </div>
+
+    <div class="col-md-3">
+      <strong>Unit:</strong> <%= @worksheet.mro_unit %>
+    </div>
+    <div class="col-md-5">
+      <strong>Component/Status:</strong> <%= @worksheet.mro_component %> / <%= @worksheet.mro_status %>
+    </div>
+    <div class="col-md-4">
+      <strong>Reporting Occasion:</strong> <%= @worksheet.reporting_occasion %>
+    </div>
+
+    <div class="mt-2">
+      <div class="col-md-8">
+        <strong>Reporting Period:</strong> <%= @worksheet.from_date.strftime("%B %d, %Y") %> through <%= @worksheet.to_date.strftime("%B %d, %Y") %>
+      </div>
+
+      <div class="col-md-4">
+        <strong>MMSB Due Date:</strong> <%= @worksheet.mmsb_due_date.strftime("%B %d, %Y") %>
+      </div>
+    </div>
+
+    <div class="mt-2">
+      <div class="col-md-12">
+        <strong>Reporting Senior (RS):</strong> <%= @worksheet.rs_rank %> <%= @worksheet.rs_name %> (<%= @worksheet.rs_billet %>)
+      </div>
+
+      <div class="col-md-12">
+        <strong>Reviewing Officer (RO):</strong> <%= @worksheet.ro_rank %> <%= @worksheet.ro_name %> (<%= @worksheet.ro_billet %>)
+      </div>
+    </div>
+
+
+    <!-- Recommendations Section -->
+    <div class="col-md-12 mt-4">
+      <h3>Recommendations</h3>
+    </div>
+    <div class="col-md-12">
+      <strong>Commendatory Fitness Report:</strong> <%= @worksheet.commendatory ? 'Yes' : 'No' %>
+    </div>
+    <div class="col-md-12">
+      <strong>Commendatory Description:</strong> <%= @worksheet.commendatory_description.present? ? @worksheet.commendatory_description : 'N/A' %>
+    </div>
+    <div class="col-md-12">
+      <strong>Recommended Comments:</strong> <%= @worksheet.recommended_comments.present? ? @worksheet.recommended_comments : 'N/A' %>
+    </div>
+    <div class="col-md-12">
+      <strong>Amplifying Information:</strong> <%= @worksheet.amplifying_information.present? ? @worksheet.amplifying_information : 'N/A' %>
+    </div>
+    <div class="col-md-12">
+      <strong>Recommended Comparative Assessment:</strong> <%= @worksheet.recommended_comparative_assessment.present? ? @worksheet.recommended_comparative_assessment : 'N/A' %>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="form-group text-center mt-5">
+      <%= link_to 'Edit', edit_worksheet_path(@worksheet), class: 'btn btn-primary btn-dark' %>
+      <%= link_to 'Back to List', worksheets_path, class: 'btn btn-secondary ml-3' %>
+    </div>
+  </div>
 </div>
