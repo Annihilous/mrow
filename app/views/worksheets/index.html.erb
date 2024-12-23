@@ -1,16 +1,30 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Worksheets" %>
+<div class="container mt-5">
+  <h1>MRO Worksheets</h1>
 
-<h1>Worksheets</h1>
-
-<div id="worksheets">
-  <% @worksheets.each do |worksheet| %>
-    <%= render worksheet %>
-    <p>
-      <%= link_to "Show this worksheet", worksheet %>
-    </p>
-  <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Created</th>
+        <th>Marine Reported On</th>
+        <th>Due Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @worksheets.each do |worksheet| %>
+        <tr>
+          <td><%= worksheet.created_at.strftime("%B %d, %Y %I:%M %p") %></td> <!-- Format created_at -->
+          <td><%= "#{worksheet.mro_rank} - #{worksheet.mro_name}" %></td> <!-- MRO Rank and Name -->
+          <td><%= worksheet.mmsb_due_date&.strftime("%B %d, %Y") %></td> <!-- Format due date -->
+          <td>
+            <%= link_to "View", worksheet, class: "btn btn-secondary" %>
+            <%= link_to "Edit", edit_worksheet_path(worksheet), class: "btn btn-primary btn-dark" %>
+            <%= link_to "Delete", worksheet, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
-<%= link_to "New worksheet", new_worksheet_path %>

@@ -12,20 +12,20 @@
 
 ActiveRecord::Schema[7.2].define(version: 2024_12_22_000733) do
   create_table "worksheets", force: :cascade do |t|
-    t.integer "mro_rank", default: 1, null: false
+    t.string "mro_rank"
     t.string "mro_name"
     t.string "mro_billet"
     t.string "mro_unit"
     t.string "mro_component"
-    t.integer "mro_status", default: 1, null: false
-    t.integer "reporting_occasion", default: 1, null: false
+    t.string "mro_status"
+    t.string "reporting_occasion"
     t.datetime "mmsb_due_date"
     t.datetime "from_date"
     t.datetime "to_date"
-    t.integer "rs_rank", default: 1, null: false
+    t.string "rs_rank"
     t.string "rs_name"
     t.string "rs_billet"
-    t.integer "ro_rank", default: 1, null: false
+    t.string "ro_rank"
     t.string "ro_name"
     t.string "ro_billet"
     t.boolean "commendatory", default: false, null: false

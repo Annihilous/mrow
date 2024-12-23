@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @worksheet %>
+  <h1>MROW</h1>
+  <h2><%= @worksheet.mro_rank %> <%= @worksheet.mro_name %> </h2>
 
-<div>
-  <%= link_to "Edit this worksheet", edit_worksheet_path(@worksheet) %> |
-  <%= link_to "Back to worksheets", worksheets_path %>
-
-  <%= button_to "Destroy this worksheet", @worksheet, method: :delete %>
+  <%= @worksheet.inspect %>
 </div>

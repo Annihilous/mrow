@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require flatpickr
+ *= require flatpickr/themes/dark
  */
 
 
@@ -10854,4 +10856,8 @@
 .image-container img {
   max-width: 100%;  /* Ensure the image scales within the container */
   height: auto;     /* Maintain aspect ratio */
+}
+
+.checkbox-spacing {
+  margin-right: 10px; /* Adjust the spacing as needed */
 }

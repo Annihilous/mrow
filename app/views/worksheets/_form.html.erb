@@ -1,8 +1,7 @@
-<%= form_with(model: worksheet) do |form| %>
+<%= simple_form_for worksheet, html: { class: "needs-validation", novalidate: true } do |form| %>
   <% if worksheet.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(worksheet.errors.count, "error") %> prohibited this worksheet from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h4><%= pluralize(worksheet.errors.count, "error") %> prohibited this worksheet from being saved:</h4>
       <ul>
         <% worksheet.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,112 +10,141 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :mro_rank, style: "display: block" %>
-    <%= form.number_field :mro_rank %>
-  </div>
+  <div class="container mt-4">
+    <h3>Marine Reported On (MRO)</h3>
+    
+    <div class="row mt-3">
+      <div class="col-md-3">
+        <%= form.input :mro_rank,
+          as: :select,
+          collection: Worksheet::OFFICER_RANKS,
+          label: "Rank",
+          input_html: { class: "form-control" },
+          include_blank: false,
+          required: false %>
+      </div>
 
-  <div>
-    <%= form.label :mro_name, style: "display: block" %>
-    <%= form.text_field :mro_name %>
-  </div>
+      <div class="col-md-5">
+        <%= form.input :mro_name, label: "Name (Last Name, First Name, Middle Initial)", input_html: { class: "form-control" } %>
+      </div>
 
-  <div>
-    <%= form.label :mro_billet, style: "display: block" %>
-    <%= form.text_field :mro_billet %>
-  </div>
+      <div class="col-md-4">
+        <%= form.input :mro_billet, label: "Billet", input_html: { class: "form-control" } %>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :mro_unit, style: "display: block" %>
-    <%= form.text_field :mro_unit %>
-  </div>
+    <div class="row mt-3">
+      <div class="col-md-2">
+        <%= form.input :mro_unit, label: "Unit", input_html: { class: "form-control" } %>
+      </div>
 
-  <div>
-    <%= form.label :mro_component, style: "display: block" %>
-    <%= form.text_field :mro_component %>
-  </div>
+      <div class="col-md-2">
+        <%= form.input :mro_component,
+          as: :select,
+          collection: Worksheet::COMPONANTS,
+          label: "Component",
+          input_html: { class: "form-control" },
+          include_blank: false,
+          required: false %>
+      </div>
 
-  <div>
-    <%= form.label :mro_status, style: "display: block" %>
-    <%= form.number_field :mro_status %>
-  </div>
+      <div class="col-md-4">
+        <%= form.input :mro_status,
+          as: :select,
+          collection: Worksheet::USMCR_STATUSES,
+          label: "Status", input_html: { class: "form-control" },
+          include_blank: false,
+          required: false %>
+      </div>
 
-  <div>
-    <%= form.label :reporting_occasion, style: "display: block" %>
-    <%= form.number_field :reporting_occasion %>
-  </div>
+      <div class="col-md-4">
+        <%= form.input :reporting_occasion,
+          label: "Reporting Occasion",
+          as: :select,
+          collection: Worksheet::REPORTING_OCCASIONS,
+          input_html: { class: "form-control" },
+          include_blank: false,
+          required: false %>
+      </div>
 
-  <div>
-    <%= form.label :mmsb_due_date, style: "display: block" %>
-    <%= form.datetime_field :mmsb_due_date %>
-  </div>
+      <div class="row mt-3">
+        <div class="col-md-4">
+          <%= form.input :mmsb_due_date, label: "Due Date", as: :string, input_html: {class: "fp_date_time form-control flatpickr flatpickr-input"} %>
+        </div>
+        
+        <div class="col-md-4">
+          <%= form.input :from_date, label: "From Date", as: :text, input_html: { class: "form-control flatpickr flatpickr-selector" } %>
+        </div>
 
-  <div>
-    <%= form.label :from_date, style: "display: block" %>
-    <%= form.datetime_field :from_date %>
-  </div>
+        <div class="col-md-4">
+          <%= form.input :to_date, label: "To Date", as: :text, input_html: { class: "form-control flatpickr flatpickr-selector" } %>
+        </div>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :to_date, style: "display: block" %>
-    <%= form.datetime_field :to_date %>
-  </div>
+    <div class="row mt-3">
+      <h3>Reporting Senior (RS)</h3>
+      <div class="col-md-3">
+        <%= form.input :rs_rank,
+          as: :select,
+          collection: Worksheet::OFFICER_RANKS,
+          label: "Rank",
+          input_html: { class: "form-control" },
+          include_blank: false,
+          required: false %>
+      </div>
+      <div class="col-md-5">
+        <%= form.input :rs_name, label: "Name", input_html: { class: "form-control" } %>
+      </div>
+      <div class="col-md-4">
+        <%= form.input :rs_billet, label: "Billet", input_html: { class: "form-control" } %>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :rs_rank, style: "display: block" %>
-    <%= form.number_field :rs_rank %>
-  </div>
+    <div class="row mt-3">
+      <h3>Reviewing Officer (RO)</h3>
+      <div class="col-md-3">
+        <%= form.input :ro_rank,
+          as: :select,
+          collection: Worksheet::OFFICER_RANKS,
+          label: "Rank",
+          input_html: { class: "form-control" },
+          include_blank: false,
+          required: false %>
+      </div>
+      <div class="col-md-5">
+        <%= form.input :ro_name, label: "Name", input_html: { class: "form-control" } %>
+      </div>
+      <div class="col-md-4">
+        <%= form.input :ro_billet, label: "Billet", input_html: { class: "form-control" } %>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :rs_name, style: "display: block" %>
-    <%= form.text_field :rs_name %>
-  </div>
+    <h3 class="mt-5">Recommendations</h3>
 
-  <div>
-    <%= form.label :rs_billet, style: "display: block" %>
-    <%= form.text_field :rs_billet %>
-  </div>
+    <div class="mt-3">
+      <%= form.input :commendatory, label: "This is a commendatory Fitness Report", as: :boolean, input_html: { class: "form-check-input checkbox-spacing" } %>
+    </div>
 
-  <div>
-    <%= form.label :ro_rank, style: "display: block" %>
-    <%= form.number_field :ro_rank %>
-  </div>
+    <div class="mt-3">
+      <%= form.input :commendatory_description, label: "Commendatory Description", as: :text, input_html: { class: "form-control", rows: 3 } %>
+    </div>
 
-  <div>
-    <%= form.label :ro_name, style: "display: block" %>
-    <%= form.text_field :ro_name %>
-  </div>
+    <div class="mt-3">
+      <%= form.input :recommended_comments, label: "Recommended Comments", as: :text, input_html: { class: "form-control", rows: 3 } %>
+    </div>
 
-  <div>
-    <%= form.label :ro_billet, style: "display: block" %>
-    <%= form.text_field :ro_billet %>
-  </div>
+    <div class="mt-3">
+      <%= form.input :amplifying_information, label: "Amplifying Information", as: :text, input_html: { class: "form-control", rows: 3 } %>
+    </div>
 
-  <div>
-    <%= form.label :commendatory, style: "display: block" %>
-    <%= form.check_box :commendatory %>
-  </div>
+    <div class="mt-3">
+      <%= form.input :recommended_comparative_assessment, label: "Recommended Comparative Assessment", input_html: { class: "form-control" } %>
+    </div>
 
-  <div>
-    <%= form.label :commendatory_description, style: "display: block" %>
-    <%= form.text_field :commendatory_description %>
-  </div>
-
-  <div>
-    <%= form.label :recommended_comments, style: "display: block" %>
-    <%= form.text_field :recommended_comments %>
-  </div>
-
-  <div>
-    <%= form.label :amplifying_information, style: "display: block" %>
-    <%= form.text_field :amplifying_information %>
-  </div>
-
-  <div>
-    <%= form.label :recommended_comparative_assessment, style: "display: block" %>
-    <%= form.text_field :recommended_comparative_assessment %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <div class="form-group text-center mt-5">
+      <%= form.submit "Submit", class: "btn btn-primary btn-dark" %>
+    </div>
+    <div class="mt-5"></div>
   </div>
 <% end %>
