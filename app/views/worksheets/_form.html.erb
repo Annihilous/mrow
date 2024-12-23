@@ -69,15 +69,15 @@
 
       <div class="row mt-3">
         <div class="col-md-4">
-          <%= form.input :mmsb_due_date, label: "Due Date", as: :string, input_html: {class: "fp_date_time form-control flatpickr flatpickr-input"} %>
-        </div>
-        
-        <div class="col-md-4">
-          <%= form.input :from_date, label: "From Date", as: :text, input_html: { class: "form-control flatpickr flatpickr-selector" } %>
+          <%= form.input :from_date, label: "From Date", as: :string, input_html: {class: "form-control datepicker" } %>
         </div>
 
         <div class="col-md-4">
-          <%= form.input :to_date, label: "To Date", as: :text, input_html: { class: "form-control flatpickr flatpickr-selector" } %>
+          <%= form.input :to_date, label: "To Date", as: :string, input_html: {class: "form-control datepicker" } %>
+        </div>
+
+        <div class="col-md-4">
+          <%= form.input :mmsb_due_date, label: "MMSB Due Date", as: :string, input_html: {class: "form-control datepicker"} %>
         </div>
       </div>
     </div>

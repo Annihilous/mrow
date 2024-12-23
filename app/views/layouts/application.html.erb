@@ -15,10 +15,26 @@
     <link rel='apple-touch-icon' href='/icon.png'>
     <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
+    <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.umd.min.js"></script>
   </head>
 
   <body>
     <%= render 'partials/header' %>
     <%= yield %>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const datepickers = document.querySelectorAll('.datepicker');
+
+        datepickers.forEach((datepicker) => {
+          new easepick.create({
+            element: datepicker,
+            css: [
+              'https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css'
+            ]
+          });
+        });
+      });
+    </script>
   </body>
 </html>
