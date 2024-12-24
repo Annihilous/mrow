@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_22_000733) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_23_234531) do
+  create_table "educations", force: :cascade do |t|
+    t.integer "worksheet_id", null: false
+    t.integer "ews", default: 0, null: false
+    t.integer "cns", default: 0, null: false
+    t.integer "war_college", default: 0, null: false
+    t.integer "graduate_degree", default: 0, null: false
+    t.integer "self_study", default: 0, null: false
+    t.integer "jpm_phase_i", default: 0, null: false
+    t.integer "jpm_phase_ii", default: 0, null: false
+    t.integer "other", default: 0, null: false
+    t.string "other_school_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["worksheet_id"], name: "index_educations_on_worksheet_id"
+  end
+
   create_table "worksheets", force: :cascade do |t|
     t.string "mro_rank"
     t.string "mro_name"
@@ -36,4 +52,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_22_000733) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "educations", "worksheets"
 end

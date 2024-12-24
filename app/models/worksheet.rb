@@ -44,9 +44,17 @@ class Worksheet < ApplicationRecord
     "Temporary Disability Retired List (TDRL)"
   ]
 
+  has_one :education, dependent: :destroy
+  accepts_nested_attributes_for :education
+
   validates :mro_rank,
             :rs_rank,
             :ro_rank, presence: true, inclusion: { in: OFFICER_RANKS }
+
+  validates :from_date,
+            :to_date,
+            :mmsb_due_date,
+            presence: true
 
   validates :mro_component, presence: true, inclusion: { in: COMPONANTS }
   validates :mro_status, presence: true, inclusion: { in: USMCR_STATUSES }

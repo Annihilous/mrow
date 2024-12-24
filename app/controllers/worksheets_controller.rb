@@ -1,5 +1,5 @@
 class WorksheetsController < ApplicationController
-  before_action :set_worksheet, only: %i[ show edit update destroy ]
+  before_action :set_worksheet,only: %i[ show edit update destroy ]
 
   # GET /worksheets or /worksheets.json
   def index
@@ -13,6 +13,7 @@ class WorksheetsController < ApplicationController
   # GET /worksheets/new
   def new
     @worksheet = Worksheet.new
+    @worksheet.build_education
   end
 
   # GET /worksheets/1/edit
@@ -25,11 +26,11 @@ class WorksheetsController < ApplicationController
 
     respond_to do |format|
       if @worksheet.save
-        format.html { redirect_to @worksheet, notice: "Worksheet was successfully created." }
-        format.json { render :show, status: :created, location: @worksheet }
+        format.html { redirect_to @worksheet,notice: "Worksheet was successfully created." }
+        format.json { render :show,status: :created,location: @worksheet }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @worksheet.errors, status: :unprocessable_entity }
+        format.html { render :new,status: :unprocessable_entity }
+        format.json { render json: @worksheet.errors,status: :unprocessable_entity }
       end
     end
   end
@@ -38,11 +39,11 @@ class WorksheetsController < ApplicationController
   def update
     respond_to do |format|
       if @worksheet.update(worksheet_params)
-        format.html { redirect_to @worksheet, notice: "Worksheet was successfully updated." }
-        format.json { render :show, status: :ok, location: @worksheet }
+        format.html { redirect_to @worksheet,notice: "Worksheet was successfully updated." }
+        format.json { render :show,status: :ok,location: @worksheet }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @worksheet.errors, status: :unprocessable_entity }
+        format.html { render :edit,status: :unprocessable_entity }
+        format.json { render json: @worksheet.errors,status: :unprocessable_entity }
       end
     end
   end
@@ -52,7 +53,7 @@ class WorksheetsController < ApplicationController
     @worksheet.destroy!
 
     respond_to do |format|
-      format.html { redirect_to worksheets_path, status: :see_other, notice: "Worksheet was successfully destroyed." }
+      format.html { redirect_to worksheets_path,status: :see_other,notice: "Worksheet was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +66,39 @@ class WorksheetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def worksheet_params
-      params.require(:worksheet).permit(:mro_rank, :mro_name, :mro_billet, :mro_unit, :mro_component, :mro_status, :reporting_occasion, :mmsb_due_date, :from_date, :to_date, :rs_rank, :rs_name, :rs_billet, :ro_rank, :ro_name, :ro_billet, :commendatory, :commendatory_description, :recommended_comments, :amplifying_information, :recommended_comparative_assessment)
+      params.require(:worksheet).permit(
+        :mro_rank,
+        :mro_name,
+        :mro_billet,
+        :mro_unit,
+        :mro_component,
+        :mro_status,
+        :reporting_occasion,
+        :mmsb_due_date,
+        :from_date,
+        :to_date,
+        :rs_rank,
+        :rs_name,
+        :rs_billet,
+        :ro_rank,
+        :ro_name,
+        :ro_billet,
+        :commendatory,
+        :commendatory_description,
+        :recommended_comments,
+        :amplifying_information,
+        :recommended_comparative_assessment,
+        education_attributes: [
+          :ews,
+          :cns,
+          :war_college,
+          :graduate_degree,
+          :self_study,
+          :jpm_phase_i,
+          :jpm_phase_ii,
+          :other,
+          :other_school_name
+        ]
+      )
     end
 end

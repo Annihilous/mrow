@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  worksheet: one
+  ews: 1
+  cns: 1
+  war_college: 1
+  graduate_degree: 1
+  self_study: 1
+  jpm_phase_i: 1
+  jpm_phase_ii: 1
+  other: 1
+  other_school_name: MyString
+
+two:
+  worksheet: two
+  ews: 1
+  cns: 1
+  war_college: 1
+  graduate_degree: 1
+  self_study: 1
+  jpm_phase_i: 1
+  jpm_phase_ii: 1
+  other: 1
+  other_school_name: MyString

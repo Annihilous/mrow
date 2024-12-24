@@ -56,6 +56,18 @@
       </div>
     </div>
 
+    <div class="col-md-12 mt-4">
+      <h3>Education and Experience</h3>
+      <h4>Schools</h4>
+      <strong>Career-Level School (EWS): </strong><%= Education::EDUCATION_STATUS[@worksheet.education.ews.to_sym] %><br>
+      <strong>Intermediate-Level School (C&S): </strong><%= Education::EDUCATION_STATUS[@worksheet.education.cns.to_sym] %><br>
+      <strong>Top-Level School (War College): </strong><%= Education::EDUCATION_STATUS[@worksheet.education.war_college.to_sym] %><br>
+      <strong>Graduate Degree Program (SEP/ADP): </strong><%= Education::EDUCATION_STATUS[@worksheet.education.graduate_degree.to_sym] %><br>
+      <strong>Graduate/Adv Degree (Self-Study): </strong><%= Education::EDUCATION_STATUS[@worksheet.education.self_study.to_sym] %><br>
+      <strong>JPME Phase I: </strong><%= Education::EDUCATION_STATUS[@worksheet.education.jpm_phase_i.to_sym] %><br>
+      <strong>JPME Phase II: </strong><%= Education::EDUCATION_STATUS[@worksheet.education.jpm_phase_ii.to_sym] %><br>
+      <strong>[Other school, if applicable]: </strong><%= Education::EDUCATION_STATUS[@worksheet.education.other.to_sym] %><br>
+    </div>
 
     <!-- Recommendations Section -->
     <div class="col-md-12 mt-4">
